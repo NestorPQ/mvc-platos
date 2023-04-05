@@ -30,22 +30,18 @@ CREATE TABLE platos
 	porciones,
 	tiempoPrepacion
 	) VALUES
-	(
-	"Carapulcra","plato tipico de chincha","tallarires,patas,carne","Peru",12,4,"30 minutos"
-	),
-	(
-	"Lomo Saltado","plato tipico peruano con carne y verduras salteadas","carne, cebolla, tomate, papas fritas","Peru",20,3,"45 minutos"
-	),
-	(
-	"Ceviche","plato peruano de pescado marinado en limon","pescado, limon, cebolla, ají","Peru",18,2,"20 minutos"
-	),
-	(
-	"Pizza Margarita","pizza clasica con tomate y mozzarella","masa de pizza, salsa de tomate, mozzarella","Italia",15,4,"30 minutos"
-	),
-	(
-	"Sushi","plato japones de arroz y pescado crudo","arroz, pescado, alga nori","Japon",25,2,"15 minutos"
-	)
-	;
+	("Carapulcra","plato tipico de chincha","tallarires,patas,carne","Peru",12,4,"30 minutos"),
+	("Lomo Saltado","plato tipico peruano con carne y verduras salteadas","carne, cebolla, tomate, papas fritas","Peru",20,3,"45 minutos"),
+	("Ceviche","plato peruano de pescado marinado en limon","pescado, limon, cebolla, ají","Peru",18,2,"20 minutos"),
+	("Pizza Margarita","pizza clasica con tomate y mozzarella","masa de pizza, salsa de tomate, mozzarella","Italia",15,4,"30 minutos"),
+	("Sushi","plato japones de arroz y pescado crudo","arroz, pescado, alga nori","Japon",25,2,"15 minutos"),
+	("Blini","Panqueques rusos tradicionales hechos con harina de trigo sarraceno","harina de trigo sarraceno, huevo, leche, crema agria","Rusia",10,4,"30 minutos"),
+	('Pasta Alfredo', 'Clásica pasta alfredo con salsa cremosa de queso', 'pasta, mantequilla, crema, ajo, queso parmesano', 'Italia', 18.99, 3, '20 minutos'),
+	('Ceviche de camarones', 'Delicioso ceviche de camarones con limón y ají', 'camarones, limón, ají, cebolla, cilantro', 'Perú', 22.5, 2, '30 minutos'),
+	("Borscht","sopa tradicional ucraniana de remolacha","remolacha, col, zanahoria, patata, carne de res","Ucrania",10,4,"1 hora"),
+	("Draniki","tortitas de patata bielorrusas","patata, cebolla, huevo, harina","Bielorrusia",8,6,"30 minutos"),
+	("Karelian Pasties","pasteles de Karelia, Finlandia","harina, mantequilla, arroz, huevo","Finlandia",12,4,"1 hora"),
+	("Sauerbraten","estofado de carne alemán","carne de res, vinagre, cebolla, zanahoria","Alemania",18,4,"2 horas")
 
 
 SELECT * FROM platos;
@@ -57,13 +53,13 @@ DELIMITER $$
 CREATE PROCEDURE spu_platos_listar()
 BEGIN
 	SELECT	idplato,
-				nombrePlato,
-				descripcion,
-				nacionalidadPlato,
-				precio,
-				porciones,
-				tiempoPrepacion,
-				estado
+		nombrePlato,
+		descripcion,
+		nacionalidadPlato,
+		precio,
+		porciones,
+		tiempoPrepacion,
+		estado
 	
 	FROM platos
 	WHERE estado = '1'
@@ -152,13 +148,6 @@ BEGIN
 	WHERE idplato = _idplato;
 END $$
 
-CALL spu_platos_registrar("Blini","Panqueques rusos tradicionales hechos con harina de trigo sarraceno","harina de trigo sarraceno, huevo, leche, crema agria","Rusia",10,4,"30 minutos");
-CALL spu_platos_registrar('Pasta Alfredo', 'Clásica pasta alfredo con salsa cremosa de queso', 'pasta, mantequilla, crema, ajo, queso parmesano', 'Italia', 18.99, 3, '20 minutos');
-CALL spu_platos_registrar('Ceviche de camarones', 'Delicioso ceviche de camarones con limón y ají', 'camarones, limón, ají, cebolla, cilantro', 'Perú', 22.5, 2, '30 minutos');
-CALL spu_platos_registrar("Borscht","sopa tradicional ucraniana de remolacha","remolacha, col, zanahoria, patata, carne de res","Ucrania",10,4,"1 hora");
-CALL spu_platos_registrar("Draniki","tortitas de patata bielorrusas","patata, cebolla, huevo, harina","Bielorrusia",8,6,"30 minutos");
-CALL spu_platos_registrar("Karelian Pasties","pasteles de Karelia, Finlandia","harina, mantequilla, arroz, huevo","Finlandia",12,4,"1 hora");
-CALL spu_platos_registrar("Sauerbraten","estofado de carne alemán","carne de res, vinagre, cebolla, zanahoria","Alemania",18,4,"2 horas");
 
 CALL spu_platos_actualizar(1, NULL, 'La carapulcra peruana es un plato típico de la gastronomía peruana', NULL, NULL, NULL, 5, NULL);
 CALL spu_platos_registrar(
