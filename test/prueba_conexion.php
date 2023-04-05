@@ -16,7 +16,7 @@ $query = $db->prepare("SELECT idplato, nombrePlato FROM platos");
 $query->execute();
 
 //  Obtenemos los resultados
-//  le indicamos que queremos que el resultado se devuelva como un arreglo asociativo
+//  le indicamos que queremos que el resultado se devuelva como un arreglo asociativo.
 $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
