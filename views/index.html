@@ -1,6 +1,7 @@
 °<!DOCTYPE html>
 <html lang="es">
 <head>
+  <title>Restaurante(platos)</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
 
 </head>
 <body>
-  <h1>Registro de platos</h1>
+
 
   <div class="container mt-3">
     <div class="card">
@@ -38,20 +39,19 @@
         
 
       </div>
-      <div class="card body">
+      <div class="card-body">
+
         <!-- Creamos la tabla -->
         <table class="table table-sm table-striped" id="tabla-platos">
           <colgroup>
             <col width="5%">
             <col width="15%">
-            <col width="20%">
+            <col width="35%">
             <col width="10%">
-            <col width="15%">
             <col width="5%">
             <col width="5%">
             <col width="15%">
-            <col width="5%">
-            <col width="5%">
+            <col width="15%">
           </colgroup>
           
           <thead>
@@ -59,16 +59,33 @@
               <th>#</th>
               <th>Nombre</th>
               <th>Descripción</th>
-              <th>Ingredientes</th>
               <th>Nacionalidad</th>
               <th>Precio</th>
               <th>Porciones</th>
               <th>Tiempo preparación</th>
-              <th>estado</th>
               <th>Operaciones</th>
             </tr>
           </thead>
 
+          <tbody>
+            
+            <!-- Agregar datos de prueba -->
+
+            <!-- <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr> -->
+          <!-- Fin datos prueva -->
+            
+          </tbody>
 
         </table>
       </div>
@@ -95,7 +112,23 @@
 
 
   <script>
-    
+    $(document).ready(function (){
+      function mostrarPlatos(){
+        console.log("hola");
+        $.ajax({
+          url:'../controllers/platos.controller.php',
+          type: 'POST',
+          data: {operacion: 'listar'},
+          dataType: 'text',
+          success: function(result){
+            $("#tabla-platos tbody").html(result);
+          }
+        });
+      }
+
+      mostrarPlatos();
+    });
+
   </script>
 
 

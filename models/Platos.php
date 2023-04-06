@@ -1,7 +1,7 @@
 <?php
 require_once "../models/Conexion.php";
 
-class Curso extends Conexion{
+class Plato extends Conexion{
     private $accesoBD;
 
 

@@ -42,5 +42,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+
+
 </body>
 </html>

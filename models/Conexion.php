@@ -33,9 +33,8 @@ class Conexion {
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       return $this->pdo;
-    } catch (PDOException $e) {
-      echo "Error al conectarse a la base de datos: " . $e->getMessage();
-      die();
+    }catch(Exception $error){
+      die($error->getMessage());
     }
   }
 }

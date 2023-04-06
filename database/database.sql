@@ -6,7 +6,7 @@ CREATE TABLE platos
 	idplato INT AUTO_INCREMENT PRIMARY KEY,
 	nombrePlato 			VARCHAR(25) 	NOT NULL UNIQUE,
 	descripcion 			VARCHAR(150)	NOT NULL,
-	ingredientes 			VARCHAR(70)		NOT NULL,
+	ingredientes 			VARCHAR(150)	NOT NULL,
 	nacionalidadPlato		VARCHAR(100)	NULL,
 	precio					DECIMAL(7,2)	NOT NULL,
 	porciones				INT 				CHECK(porciones > 0),
