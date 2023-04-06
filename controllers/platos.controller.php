@@ -27,7 +27,7 @@ if (isset($_POST['operacion'])){
                     <td>
 
                         <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
-                        <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-success btn-sm editar'><i class='bi bi-pencil'></i></a>
+                        <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-success btn-sm editar' style='float: right;'><i class='bi bi-pencil'></i></a>
                         
                     </td>
                 </tr>
@@ -39,6 +39,19 @@ if (isset($_POST['operacion'])){
             }
         }
     }
+    if($_POST['operacion'] == 'registrar'){
+        $datosForm = [
+            "nombreplato"            =>  $_POST['nombreplato'],
+            "descripcion"            =>  $_POST['descripcion'],
+            "ingredientes"           =>  $_POST['ingredientes'],
+            "nacionalidadPlato"      =>  $_POST['nacionalidadPlato'],
+            "precio"                 =>  $_POST['precio'],
+            "porciones"              =>  $_POST['porciones'],
+            "tiempoPrepacion"        =>  $_POST['tiempoPrepacion']
+        ];
+
+        $plato->registrarPlato($datosForm);
+    };
 }
 
 ?>

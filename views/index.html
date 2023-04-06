@@ -29,7 +29,7 @@
           </div>
 
           <div class="col-md-6 text-end">
-            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modalId-registro-cursos">
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-platos">
               <i class="bi bi-patch-plus">
                 Agregar Plato
               </i>
@@ -44,13 +44,13 @@
         <!-- Creamos la tabla -->
         <table class="table table-sm table-striped" id="tabla-platos">
           <colgroup>
-            <col width="5%">
+            <col width="3%">
             <col width="15%">
-            <col width="35%">
+            <col width="45%">
+            <col width="7%">
+            <col width="5%">
+            <col width="5%">
             <col width="10%">
-            <col width="5%">
-            <col width="5%">
-            <col width="15%">
             <col width="15%">
           </colgroup>
           
@@ -86,7 +86,6 @@
           <!-- Fin datos prueva -->
             
           </tbody>
-
         </table>
       </div>
       <div class="card-footer text-end">
@@ -96,7 +95,64 @@
   </div> <!--  Fin del container  -->
 
 
+  <!-- Zona de modales -->
 
+  <!-- Modal trigger button -->
+
+  <!-- Modal Body -->
+  <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+  <div class="modal fade" id="modal-registro-platos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-light">
+          <h5 class="modal-title" id="modalTitleId">Agregar platos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- Cuerpo del modal -->
+          <form id="formulario-platos">
+            <div class="mb-3">
+              <label for="nombrePlato" class="form-label">Nombre</label>
+              <input type="text" class="form-control form-control-sm" id="nombrePlato">
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-labe">Descripcion</label>
+              <input type="text" class="form-control form-control-sm" id="descripcion">
+            </div>
+            <div class="mb-3">
+              <label for="ingredientes" class="form-labe">Ingredientes</label>
+              <input type="text" class="form-control form-control-sm" id="ingredientes">
+            </div>
+            <div class="mb-3">
+              <label for="nacionalidadPlato" class="form-labe">Nacionalidad</label>
+              <input type="text" class="form-control form-control-sm" id="nacionalidadPlato">
+            </div>
+            <div class="mb-3">
+              <label for="precio" class="form-labe">Precio</label>
+              <input type="text" class="form-control form-control-sm" id="precio">
+            </div>
+            <div class="mb-3">
+              <label for="porciones" class="form-labe">Porciones</label>
+              <input type="text" class="form-control form-control-sm" id="porciones">
+            </div>
+            <div class="mb-3">
+              <label for="tiempoPrepacion" class="form-labe">Tiempo de Preparación</label>
+              <input type="text" class="form-control form-control-sm" id="tiempoPrepacion">
+            </div>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="guardar-plato">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -113,6 +169,8 @@
 
   <script>
     $(document).ready(function (){
+
+      //  MOSTRAR PLATO
       function mostrarPlatos(){
         console.log("hola");
         $.ajax({
@@ -126,9 +184,68 @@
         });
       }
 
-      mostrarPlatos();
-    });
 
+      //  REGISTRAR PLATO
+      function registrarPlato(){
+        // console.log("hola");
+        // prompt("Escribe tu nombre")
+
+        // Mostramos la confirmación al usuario
+        // var confirmacion = window.confirm("¿Está seguro de registrar este nuevo plato?");
+
+
+        if(confirm("¿Está seguro de registrar este nuevo plato?")){
+          $.ajax({
+            url: "../controllers/platos.controller.php",
+            type: "POST",
+            data: {
+              operacion            : 'registrar',
+              nombrePlato          : $("#nombrePlato").val(),
+              descripcion          : $("#descripcion").val(),
+              ingredientes         : $("#ingredientes").val(),
+              nacionalidadPlato    : $("#nacionalidadPlato").val(),
+              precio               : $("#precio").val(),
+              porciones            : $("#porciones").val(),
+              tiempoPrepacion      : $("#tiempoPrepacion").val()
+            },
+            success: function(result){
+              if(result == ""){
+                //  Reiniciamos el formulario
+                $("#formulario-platos")[0].reset();
+
+                //  Actualizamos la tabla
+                mostrarPlatos();
+                
+                //  Cerramos el modal
+                $("#modal-registro-platos").modal('hide');
+
+                // // Mostramos mensaje de éxito al usuario
+                // alert("El plato ha sido registrado exitosamente.");
+                // } else {
+                //   // Mostramos mensaje de error al usuario
+                //   alert("Ha ocurrido un error durante el registro del plato. Por favor, inténtalo de nuevo más tarde.");
+                }  
+            }
+          })
+        }
+      }
+
+
+      //  ELIMINAR PLATO O PORNER ESTADO A 0
+      function eliminarPlato(){
+        console.log("Eliminando...")
+      }
+
+
+      //  EVENTOS
+      $("#guardar-plato").click(registrarPlato);
+
+
+
+      //  Ejecución automatica
+      mostrarPlatos();
+
+    });
   </script>
 
 

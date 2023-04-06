@@ -27,6 +27,29 @@ class Plato extends Conexion{
         }
     }
 
+
+    //  Método registrar plato
+    public function registrarPlato($datos = []){
+        try {
+            $consulta = $this->accesoBD->prepare("CALL spu_platos_registrar(?,?,?,?,?,?,?)");
+
+            $consulta->execute(
+                array(
+                    $datos["nombrePlato"],
+                    $datos["descripcion"],
+                    $datos["ingredientes"],
+                    $datos["nacionalidadPlato"],
+                    $datos["precio"],
+                    $datos["porciones"],
+                    $datos["tiempoPrepacion"]
+                )
+            );
+
+        } catch (Exception $e) {
+            die("Error en :" . $e->getMessage());
+        }
+    }
+
 }
 
 ?>
