@@ -15,7 +15,6 @@ if (isset($_POST['operacion'])){
 
             foreach($datosObtenidos as $plato){
                 echo "
-                
                 <tr>
                     <td>{$numeroFila}</td>
                     <td>{$plato['nombrePlato']}</td>
@@ -25,10 +24,8 @@ if (isset($_POST['operacion'])){
                     <td>{$plato['porciones']}</td>
                     <td>{$plato['tiempoPrepacion']}</td>
                     <td>
-
                         <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
-                        <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-success btn-sm editar' style='float: right;'><i class='bi bi-pencil'></i></a>
-                        
+                        <a href='#' data-idplato='{$plato['idplato']}' class='btn btn-success btn-sm editar' style='float: right;'><i class='bi bi-pencil'></i></a>                     
                     </td>
                 </tr>
                 
@@ -51,7 +48,13 @@ if (isset($_POST['operacion'])){
         ];
 
         $plato->registrarPlato($datosForm);
-    };
+        var_dump($datosForm);
+    }
+
+
+    if ($_POST['operacion'] == 'eliminar'){
+        $plato->eliminarPlato($_POST['idplato']);
+    }
 }
 
 ?>

@@ -29,7 +29,7 @@
           </div>
 
           <div class="col-md-6 text-end">
-            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-platos">
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modalId-registro-platos">
               <i class="bi bi-patch-plus">
                 Agregar Plato
               </i>
@@ -101,7 +101,7 @@
 
   <!-- Modal Body -->
   <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-  <div class="modal fade" id="modal-registro-platos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal fade" id="modalId-registro-platos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-secondary text-light">
@@ -172,7 +172,7 @@
 
       //  MOSTRAR PLATO
       function mostrarPlatos(){
-        console.log("hola");
+        // console.log("hola");
         $.ajax({
           url:'../controllers/platos.controller.php',
           type: 'POST',
@@ -187,7 +187,7 @@
 
       //  REGISTRAR PLATO
       function registrarPlato(){
-        // console.log("hola");
+        console.log("hola");
         // prompt("Escribe tu nombre")
 
         // Mostramos la confirmación al usuario
@@ -217,13 +217,8 @@
                 mostrarPlatos();
                 
                 //  Cerramos el modal
-                $("#modal-registro-platos").modal('hide');
+                $("#modalId-registro-platos").modal('hide');
 
-                // // Mostramos mensaje de éxito al usuario
-                // alert("El plato ha sido registrado exitosamente.");
-                // } else {
-                //   // Mostramos mensaje de error al usuario
-                //   alert("Ha ocurrido un error durante el registro del plato. Por favor, inténtalo de nuevo más tarde.");
                 }  
             }
           })
@@ -240,6 +235,25 @@
       //  EVENTOS
       $("#guardar-plato").click(registrarPlato);
 
+
+      $("#tabla-platos tbody").on("click", ".eliminar", function(){
+        const idplatoEliminar = $(this).data("idplato");
+        if (confirm("¿Está seguro de proceder?")){
+          $.ajax({
+            url: "../controllers/platos.controller.php",
+            type: 'POST',
+            data: {
+              operacion   :   'eliminar',
+              idplato     :   idplatoEliminar
+            },
+            success: function(result){
+              if (result == ""){
+                mostrarPlatos();
+              }
+            }
+          })
+        };
+      })
 
 
       //  Ejecución automatica

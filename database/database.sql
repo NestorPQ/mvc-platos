@@ -162,8 +162,3 @@ CALL spu_platos_registrar(
 
 --  =============================
 SELECT * FROM platos;
-
-
---  VOLVEMOS AL DELIMITADOR DE SENTENCIAS PREDETERMINADO
-DELIMITER ; 
-

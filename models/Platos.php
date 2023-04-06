@@ -46,7 +46,19 @@ class Plato extends Conexion{
             );
 
         } catch (Exception $e) {
-            die("Error en :" . $e->getMessage());
+            die($e->getMessage());
+        }
+    }
+
+
+    //  Método eliminar plato
+    public function eliminarPlato($idplato = 0){
+        try {
+            $consulta = $this->accesoBD->prepare("CALL spu_platos_eliminar(?,?);");
+            $consulta->execute(array($idplato,'0'));
+
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 
