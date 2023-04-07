@@ -62,6 +62,30 @@ class Plato extends Conexion{
         }
     }
 
+
+    //  Funcion validar dato
+    protected static function verificar_datos($filtro, $cadena){
+        if(preg_match("/^".$filtro."$/", $cadena)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+    //  Función verificar fecha
+    protected static function verificar_fecha($fecha){
+        $valores=explode('-', $fecha);
+
+        // día - mes - año
+        if (count($valores)==3 && checkdate($valores[1], $valores[2], $valores[3])) {
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
+
 }
 
 ?>
