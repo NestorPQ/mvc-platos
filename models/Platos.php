@@ -54,7 +54,7 @@ class Plato extends Conexion{
     //  Método eliminar plato
     public function eliminarPlato($idplato = 0){
         try {
-            $consulta = $this->accesoBD->prepare("CALL spu_platos_eliminar(?,?);");
+            $consulta = $this->accesoBD->prepare("CALL spu_platos_eliminar(?,?)");
             $consulta->execute(array($idplato,'0'));
 
         } catch (Exception $e) {

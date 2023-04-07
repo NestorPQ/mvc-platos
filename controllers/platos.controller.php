@@ -19,6 +19,7 @@ if (isset($_POST['operacion'])){
                     <td>{$numeroFila}</td>
                     <td>{$plato['nombrePlato']}</td>
                     <td>{$plato['descripcion']}</td>
+                    <td>{$plato['ingredientes']}</td>
                     <td>{$plato['nacionalidadPlato']}</td>
                     <td>{$plato['precio']}</td>
                     <td>{$plato['porciones']}</td>
@@ -32,13 +33,14 @@ if (isset($_POST['operacion'])){
                 ";
                 // echo("hola mundo");
                 // echo(var_dump($plato['ingredientes']));
+                
                 $numeroFila++;
             }
         }
     }
-    if($_POST['operacion'] == 'registrar'){
+    if ($_POST['operacion'] == 'registrar'){
         $datosForm = [
-            "nombreplato"            =>  $_POST['nombreplato'],
+            "nombrePlato"            =>  $_POST['nombrePlato'],
             "descripcion"            =>  $_POST['descripcion'],
             "ingredientes"           =>  $_POST['ingredientes'],
             "nacionalidadPlato"      =>  $_POST['nacionalidadPlato'],
@@ -48,7 +50,7 @@ if (isset($_POST['operacion'])){
         ];
 
         $plato->registrarPlato($datosForm);
-        var_dump($datosForm);
+        // var_dump($datosForm);
     }
 
 

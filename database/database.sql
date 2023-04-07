@@ -55,6 +55,7 @@ BEGIN
 	SELECT	idplato,
 		nombrePlato,
 		descripcion,
+		ingredientes,
 		nacionalidadPlato,
 		precio,
 		porciones,

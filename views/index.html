@@ -44,14 +44,15 @@
         <!-- Creamos la tabla -->
         <table class="table table-sm table-striped" id="tabla-platos">
           <colgroup>
-            <col width="3%">
-            <col width="15%">
-            <col width="45%">
-            <col width="7%">
-            <col width="5%">
-            <col width="5%">
-            <col width="10%">
-            <col width="15%">
+            <col width="3%">    <!-- id-->
+            <col width="15%">   <!-- nombre -->
+            <col width="35%">   <!-- descripcion -->
+            <col width="10%">     <!-- ingrediente -->
+            <col width="7%">    <!-- nacionalida -->
+            <col width="5%">    <!-- precio -->
+            <col width="5%">    <!-- porciones -->
+            <col width="10%">   <!-- tiempo pre -->
+            <col width="15%">   <!-- operaicones -->
           </colgroup>
           
           <thead>
@@ -59,6 +60,7 @@
               <th>#</th>
               <th>Nombre</th>
               <th>Descripción</th>
+              <th>Ingredientes</th>
               <th>Nacionalidad</th>
               <th>Precio</th>
               <th>Porciones</th>
@@ -194,7 +196,7 @@
         // var confirmacion = window.confirm("¿Está seguro de registrar este nuevo plato?");
 
 
-        if(confirm("¿Está seguro de registrar este nuevo plato?")){
+        if (confirm("¿Está seguro de registrar este nuevo plato?")){
           $.ajax({
             url: "../controllers/platos.controller.php",
             type: "POST",
