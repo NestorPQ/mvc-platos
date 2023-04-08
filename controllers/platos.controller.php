@@ -31,8 +31,8 @@ if (isset($_POST['operacion'])){
                 </tr>
                 
                 ";
-                // echo("hola mundo");
-                // echo(var_dump($plato['ingredientes']));
+                echo("hola mundo");
+                echo(var_dump($plato['ingredientes']));
                 
                 $numeroFila++;
             }

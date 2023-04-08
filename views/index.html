@@ -13,9 +13,14 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+
 
 </head>
+
 <body>
+    
 
 
   <div class="container mt-3">
@@ -43,7 +48,7 @@
       <div class="card-body">
 
         <!-- Creamos la tabla -->
-        <table class="table table-sm table-striped" id="tabla-platos">
+        <table class="table table-sm table-striped " id="tabla-platos">
           <colgroup>
             <col width="3%">    <!-- id-->
             <col width="15%">   <!-- nombre -->
@@ -278,8 +283,9 @@
 
       //  EVENTOS
       $("#guardar-plato").click(registrarPlato);
-
-
+      
+      
+      
       $("#tabla-platos tbody").on("click", ".eliminar", function(){
         const idplatoEliminar = $(this).data("idplato");
         if (confirm("¿Está seguro de proceder?")){
@@ -308,37 +314,32 @@
     });
 
 
-  </script>
-
-
-  <script>
-
-  // alert("Mensaje de alerta!!!");
-
-  $(document).ready(function() {
-    $("#precio, #porciones").on("input", function() {
-      var inputVal = $(this).val();
-      if (!isNaN(inputVal)) {
-        // $(this).removeClass("error");
-        $(this).css({
-          "background-color": "white",
-          "border": "1px solid #9FA6B2",
-          "color": "black"
-        });
-      } else {
-        // $(this).addClass("error");
-        $(this).css({
-          "background-color": "#ebdfdf",
-          "border": "1px solid red",
-          "color": "darkred"
-        });
-        if(inputVal.length >= 5){
-          alert("Solo ingrese números", "hola");
-          
+       //  Evento para la validacion de datos
+    $(document).ready(function() {
+      $("#precio, #porciones").on("input", function() {
+        var inputVal = $(this).val();
+        if (!isNaN(inputVal)) {
+          // $(this).removeClass("error");
+          $(this).css({
+            "background-color": "white",
+            "border": "1px solid #9FA6B2",
+            "color": "black"
+          });
+        } else {
+          // $(this).addClass("error");
+          $(this).css({
+            "background-color": "#ebdfdf",
+            "border": "1px solid red",
+            "color": "darkred"
+          });
+          if(inputVal.length >= 5){
+            alert("Solo ingrese números", "hola");
+            
+          }
         }
-      }
+      });
     });
-  });
+
 
   </script>
   
