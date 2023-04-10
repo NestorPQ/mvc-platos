@@ -1,4 +1,4 @@
-°<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <title>Restaurante(platos)</title>
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="../style/style.css">
 
 
 
@@ -96,8 +98,11 @@
           </tbody>
         </table>
       </div>
-      <div class="card-footer text-end">
+
+      <div class="card-footer">
+        
         <button class="btn btn-primary btn-sm" id="actualizar">Actualizar Datos</button>
+        <input type="color" id="color-picker" value="#007bff">
       </div>
     </div>
   </div> <!--  Fin del container  -->
@@ -339,6 +344,18 @@
         }
       });
     });
+
+
+    //  Cambio de color del boton actualizar
+
+  const boton = document.getElementById('actualizar');
+  const colorPicker = document.getElementById('color-picker');
+  boton.style.backgroundColor = colorPicker.value;
+
+  colorPicker.addEventListener('input', () => {
+    boton.style.backgroundColor = colorPicker.value;
+  });
+
 
 
   </script>

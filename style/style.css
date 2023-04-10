@@ -1,0 +1,27 @@
+.card-body{
+
+    background: linear-gradient(
+        to left,
+        rgb(224, 146, 146),
+        rgb(233, 214, 178),
+        rgb(231, 231, 152)
+    );
+}
+
+
+body {
+
+    background-image: url('../img/metalica.jpg');
+    background-size: cover;
+}
+/* 
+
+table td {
+    vertical-align: middle;
+} */
+
+
+#color-picker {
+
+    justify-items: start;
+}
